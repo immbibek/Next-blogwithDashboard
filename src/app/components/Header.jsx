@@ -5,11 +5,12 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { usePathname } from 'next/navigation'; // Importing the usePathname hook
 import { useState } from 'react';
+import {useTheme} from 'next-themes'
 
 export default function Header() {
   const path = usePathname(); // Using usePathname hook to get current path
   
-  const[theme,setTheme]=useState(false)
+  const{theme,setTheme}=useTheme()
 
   return (
     <Navbar className='border-b-2'>
