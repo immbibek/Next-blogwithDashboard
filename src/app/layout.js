@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import ThemeCom from "./components/ThemeCom";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeModeScript } from "flowbite-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,7 +24,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeModeScript/>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -33,6 +39,8 @@ export default function RootLayout({ children }) {
          </ThemeCom>
         </ThemeProvider> 
       </body>
+      </head>
     </html>
+    </ClerkProvider>
   );
 }
